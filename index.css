@@ -184,31 +184,28 @@ button:active {
 }
 
 /* mobile.css */
-/* mobile.css */
 @media screen and (max-width: 768px) {
-    /* Centraliza o container principal */
-    .game-container {
+    /* Esconde o fundo pesado se necessário e foca no jogo */
+    body { overflow-y: auto; }
+
+    #game-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 5px;
     }
 
-    /* Ajusta o Canvas para não estourar a tela */
     canvas {
-        width: 90vw !important; 
+        width: 95vw !important;
         height: auto !important;
-        margin-bottom: 20px;
     }
 
-    /* Organização do D-Pad (Setas) */
+    /* Centralização do D-PAD */
     #mobile-controls {
         display: flex !important;
         flex-direction: column;
         align-items: center;
+        margin: 20px 0;
         gap: 10px;
-        margin-top: 10px;
     }
 
     .control-row {
@@ -218,22 +215,27 @@ button:active {
     }
 
     .btn-control {
-        width: 65px;
-        height: 65px;
-        background: rgba(255, 200, 0, 0.2);
-        border: 2px solid #ffc800;
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 200, 0, 0.1);
+        border: 3px solid #ffc800;
         border-radius: 50%;
         color: #ffc800;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* Evita o zoom chato do iOS ao clicar rápido */
-        touch-action: manipulation; 
+        touch-action: manipulation;
     }
 
     .btn-control:active {
         background: #ffc800;
-        color: #1a0f08;
+        color: #000;
+    }
+
+    /* Ajuste para o Card de Quiz no Mobile */
+    #quiz-card {
+        width: 95% !important;
+        padding: 15px !important;
     }
 }
