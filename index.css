@@ -1,11 +1,11 @@
 :root {
-    --primary: #d97706; /* Dourado */
+    --primary: #d97706;
     --primary-dark: #924e00;
-    --accent: #991b1b; /* Terracota */
+    --accent: #991b1b;
     --accent-dark: #6a1010;
-    --success: #16a34a; /* Verde */
+    --success: #16a34a;
     --success-dark: #14532d;
-    --rank: #8b5cf6; /* Roxo */
+    --rank: #8b5cf6;
     --text-dark: #1a0f08;
 }
 
@@ -18,8 +18,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     color: white;
-    /* overflow-x impede o "balanço" lateral no mobile */
-    overflow-x: hidden; 
+    overflow-x: hidden; /* Essencial para não sobrar tela pro lado */
 }
 
 .overlay-bg { 
@@ -52,7 +51,7 @@ body {
 }
 
 /* TEXTOS */
-.logo-text { font-size: 3.5rem; font-weight: 900; margin: 0; color: white; text-align: center; line-height: 1; }
+.logo-text { font-size: 3.5rem; font-weight: 900; margin: 0; color: white; text-align: center; line-height: 1.1; }
 .logo-text span { color: var(--primary); }
 .subtitle { color: white; letter-spacing: 5px; font-weight: 700; margin-bottom: 40px; opacity: 0.8; text-transform: uppercase; text-align: center; }
 
@@ -65,150 +64,67 @@ button {
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.1s;
-    position: relative;
 }
 
-button:active {
-    transform: translateY(4px);
-    box-shadow: none !important;
-}
+button:active { transform: translateY(4px); box-shadow: none !important; }
 
-/* VARIAÇÕES DE BOTÕES */
 .btn-main { background: var(--primary); color: white; padding: 20px; width: 320px; margin-bottom: 15px; box-shadow: 0 6px 0 var(--primary-dark); }
 .btn-sec { background: #3b82f6; color: white; padding: 20px; width: 320px; margin-bottom: 15px; box-shadow: 0 6px 0 #1d4ed8; }
 .btn-rank { background: var(--rank); color: white; padding: 20px; width: 320px; box-shadow: 0 6px 0 #5b21b6; }
 
-/* CARDS (PERFIL E RANKING) */
+/* CARDS */
 .card-modern { 
-    background: white; 
-    color: var(--text-dark); 
-    padding: 35px; 
-    border-radius: 30px; 
-    text-align: center; 
-    width: 380px; 
-    max-width: 90%;
-    border-bottom: 8px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    min-height: 400px;
-    justify-content: space-between;
+    background: white; color: var(--text-dark); padding: 35px; border-radius: 30px; 
+    text-align: center; width: 380px; max-width: 90%; border-bottom: 8px solid #ddd;
+    display: flex; flex-direction: column; min-height: 400px; justify-content: space-between;
 }
 
 /* GAMEPLAY AREA */
 #game-container { 
-    position: relative; 
-    border: 8px solid white; 
-    border-radius: 25px; 
-    background: #000; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+    position: relative; border: 8px solid white; border-radius: 25px; 
+    background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
 }
+
+canvas { display: block; max-width: 100%; height: auto; }
 
 /* INFO BAR */
 .info-bar { 
     display: flex; justify-content: space-between; align-items: center; 
     width: 600px; max-width: 95%; margin-top: 25px; background: rgba(255,255,255,0.1); 
-    padding: 15px 25px; border-radius: 25px; backdrop-filter: blur(10px); 
-    box-sizing: border-box;
+    padding: 15px 25px; border-radius: 25px; backdrop-filter: blur(10px); box-sizing: border-box;
 }
 
 .game-footer {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6); 
-    font-size: 0.7rem;
-    pointer-events: none; 
+    position: fixed; bottom: 10px; width: 100%; text-align: center;
+    color: rgba(255, 255, 255, 0.6); font-size: 0.7rem; pointer-events: none; 
 }
 
-/* REGRAS EXCLUSIVAS MOBILE PARA CORRIGIR O CORTE */
+/* --- REGRAS MOBILE (LIMPAS E ORGANIZADAS) --- */
 @media screen and (max-width: 768px) {
-    /* Trava o corpo para evitar que a tela balance para os lados */
-    body {
-        overflow-x: hidden;
-        align-items: flex-start;
-        padding: 0;
-        display: block; /* Facilita o empilhamento vertical */
-    }
+    body { display: block; overflow-y: auto; align-items: flex-start; }
 
-    .screen {
-        padding: 10px;
-        min-height: 100vh;
-        justify-content: flex-start; /* Alinha do topo para baixo */
-    }
+    .screen { padding: 15px 10px; min-height: auto; justify-content: flex-start; }
 
-    /* Logo e Subtítulo mais compactos para sobrar espaço */
-    .logo-text { font-size: 1.8rem !important; margin-top: 10px; }
-    .subtitle { font-size: 0.7rem !important; margin-bottom: 15px !important; letter-spacing: 2px; }
+    .logo-text { font-size: 2rem !important; margin-top: 10px; }
+    .subtitle { font-size: 0.7rem !important; letter-spacing: 2px; margin-bottom: 20px !important; }
 
-    /* Ajuste do Jogo para caber na "janela" do celular */
-    #game-container {
-        width: 90vw !important;
-        max-width: 320px; /* Tamanho ideal para não cortar em telas pequenas */
-        margin: 0 auto;
-        border-width: 4px;
-    }
+    /* Botões Menu Principal */
+    .btn-main, .btn-sec, .btn-rank { width: 85vw; padding: 15px; font-size: 0.9rem; }
 
-    canvas {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 35vh !important; /* Limita a altura do jogo a 35% da tela */
-    }
+    /* Container do Jogo */
+    #game-container { width: 92vw !important; max-width: 320px; margin: 0 auto; border-width: 4px; }
+    canvas { max-height: 35vh !important; }
 
-    /* Alinhamento dos Controles Mobile */
-    #mobile-controls {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        gap: 5px;
-    }
+    /* Controles */
+    #mobile-controls { display: flex !important; flex-direction: column; align-items: center; margin: 15px 0; gap: 5px; }
+    .control-row { display: flex; gap: 10px; }
+    .btn-control { width: 55px !important; height: 55px !important; font-size: 1.4rem !important; background: rgba(217,119,6,0.2); border: 2px solid var(--primary); color: var(--primary); }
 
-    .control-row {
-        display: flex;
-        gap: 10px;
-    }
+    /* Info Bar Mobile */
+    .info-bar { width: 92vw; flex-direction: row; justify-content: space-around; padding: 10px; margin: 15px auto; }
+    #score { font-size: 1.6rem !important; }
+    .btn-action-green, .btn-action-red { padding: 10px 15px !important; font-size: 0.75rem !important; }
 
-    .btn-control {
-        width: 50px !important;
-        height: 50px !important;
-        font-size: 1.2rem !important;
-        border-radius: 12px !important;
-    }
-
-    /* Placar e Botões de Ação lado a lado para economizar altura */
-    .info-bar {
-        width: 90vw;
-        max-width: 320px;
-        flex-direction: row; /* Mantém horizontal no mobile para poupar espaço */
-        padding: 10px;
-        margin-top: 10px;
-        justify-content: space-around;
-    }
-
-    #score { font-size: 1.5rem !important; }
-    .btn-action-green, .btn-action-red {
-        padding: 8px 12px !important;
-        font-size: 0.7rem !important;
-    }
-
-    /* Ajuste do Quiz para não cobrir a tela toda e permitir ver o placar */
-    #quiz-card {
-        width: 90% !important;
-        padding: 15px !important;
-        font-size: 0.9rem;
-    }
-
-    #quiz-options button {
-        padding: 10px !important;
-        font-size: 0.8rem !important;
-    }
-
-    /* Rodapé discreto no final */
-    .game-footer {
-        position: relative;
-        font-size: 0.6rem !important;
-        margin-top: 20px;
-        padding-bottom: 10px;
-    }
+    /* Footer Mobile - Estático para não flutuar sobre os botões */
+    .game-footer { position: relative !important; margin: 20px 0; padding-bottom: 10px; bottom: auto; }
 }
