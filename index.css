@@ -123,63 +123,92 @@ button:active {
 
 /* REGRAS EXCLUSIVAS MOBILE PARA CORRIGIR O CORTE */
 @media screen and (max-width: 768px) {
+    /* Trava o corpo para evitar que a tela balance para os lados */
     body {
-        overflow-y: auto; /* Permite rolar se o celular for muito pequeno */
-        align-items: flex-start; /* Começa do topo */
-        padding-top: 20px;
+        overflow-x: hidden;
+        align-items: flex-start;
+        padding: 0;
+        display: block; /* Facilita o empilhamento vertical */
     }
 
-    .logo-text { font-size: 2.2rem; }
-    .subtitle { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; }
-
-    /* Ajusta largura dos botões para não estourarem a tela */
-    .btn-main, .btn-sec, .btn-rank {
-        width: 85vw; 
-        padding: 15px;
-        font-size: 0.9rem;
+    .screen {
+        padding: 10px;
+        min-height: 100vh;
+        justify-content: flex-start; /* Alinha do topo para baixo */
     }
 
-    /* Ajuste crítico do Game Screen */
-    #game-screen {
-        justify-content: center;
-        padding: 10px 0;
+    /* Logo e Subtítulo mais compactos para sobrar espaço */
+    .logo-text { font-size: 1.8rem !important; margin-top: 10px; }
+    .subtitle { font-size: 0.7rem !important; margin-bottom: 15px !important; letter-spacing: 2px; }
+
+    /* Ajuste do Jogo para caber na "janela" do celular */
+    #game-container {
+        width: 90vw !important;
+        max-width: 320px; /* Tamanho ideal para não cortar em telas pequenas */
+        margin: 0 auto;
+        border-width: 4px;
     }
 
     canvas {
-        width: 90vw !important; /* Quase largura total */
+        width: 100% !important;
         height: auto !important;
-        max-height: 40vh !important; /* Limita altura para sobrar espaço embaixo */
-        border-width: 4px !important;
+        max-height: 35vh !important; /* Limita a altura do jogo a 35% da tela */
     }
 
-    .info-bar {
-        width: 90vw;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-    }
-
+    /* Alinhamento dos Controles Mobile */
     #mobile-controls {
         display: flex !important;
         flex-direction: column;
         align-items: center;
-        margin-top: 15px;
-        gap: 8px;
+        margin-top: 10px;
+        gap: 5px;
+    }
+
+    .control-row {
+        display: flex;
+        gap: 10px;
     }
 
     .btn-control {
-        width: 60px !important;
-        height: 60px !important;
-        background: rgba(217, 119, 6, 0.2);
-        border: 2px solid var(--primary);
-        border-radius: 50%;
-        color: var(--primary);
-        font-size: 1.5rem;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.2rem !important;
+        border-radius: 12px !important;
     }
 
+    /* Placar e Botões de Ação lado a lado para economizar altura */
+    .info-bar {
+        width: 90vw;
+        max-width: 320px;
+        flex-direction: row; /* Mantém horizontal no mobile para poupar espaço */
+        padding: 10px;
+        margin-top: 10px;
+        justify-content: space-around;
+    }
+
+    #score { font-size: 1.5rem !important; }
+    .btn-action-green, .btn-action-red {
+        padding: 8px 12px !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* Ajuste do Quiz para não cobrir a tela toda e permitir ver o placar */
+    #quiz-card {
+        width: 90% !important;
+        padding: 15px !important;
+        font-size: 0.9rem;
+    }
+
+    #quiz-options button {
+        padding: 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Rodapé discreto no final */
     .game-footer {
         position: relative;
-        margin-top: 30px;
-        padding-bottom: 20px;
+        font-size: 0.6rem !important;
+        margin-top: 20px;
+        padding-bottom: 10px;
     }
 }
