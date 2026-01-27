@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quilombo Saber</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 768px)">
@@ -37,29 +37,41 @@
     </div>
 
    <div id="ranking-screen" class="screen hidden">
-    <div class="card-modern">
-        <h2>🏆 TOP EXPLORADORES</h2>
-        <table id="ranking-table">
-            <thead>
-                <tr>
-                    <th>Pos</th>
-                    <th>Explorador</th>
-                    <th>Pontos</th>
-                </tr>
-            </thead>
-            <tbody id="ranking-body"></tbody>
-        </table>
-        
-        <button class="back-btn" onclick="showScreen('main-menu')">VOLTAR AO MENU</button>
-        
-        <div class="separator-space"></div>
-        <button class="btn-clear-ranking" onclick="clearRanking()"> Resetar Ranking</button>
+        <div class="card-modern">
+            <h2>🏆 TOP EXPLORADORES</h2>
+            <table id="ranking-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Explorador</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="ranking-body"></tbody>
+            </table>
+            
+            <button class="back-btn" onclick="showScreen('main-menu')">VOLTAR AO MENU</button>
+            
+            <div class="separator-space"></div>
+            <button class="btn-clear-ranking" onclick="clearRanking()"> Resetar Ranking</button>
+        </div>
     </div>
-</div>
 
     <div id="game-screen" class="screen hidden">
         <div id="game-container">
             <canvas id="canvas" width="600" height="600"></canvas>
+            
+            <div id="mobile-controls">
+                <div class="control-row">
+                    <button class="btn-control" id="btn-up">▲</button>
+                </div>
+                <div class="control-row">
+                    <button class="btn-control" id="btn-left">◀</button>
+                    <button class="btn-control" id="btn-down">▼</button>
+                    <button class="btn-control" id="btn-right">▶</button>
+                </div>
+            </div>
+
             <div id="quiz-container" class="hidden">
                 <div id="quiz-card">
                     <div class="quiz-header"> DESAFIO ANCESTRAL</div>
@@ -69,6 +81,7 @@
             </div>
             <div id="countdown" class="hidden"></div>
         </div>
+
         <div class="info-bar">
             <div class="score-box">
                 <span class="score-label">PONTOS</span>
@@ -81,11 +94,10 @@
         </div>
     </div>
 
+    <footer class="game-footer">
+        <p>Projeto: <strong>Prof. Vagno Lopes Nascimento</strong> | <strong>Jorge Luiz Edward</strong> Full Stack Developer</p>
+    </footer>
+
     <script src="index.js"></script>
-
-   <footer class="game-footer">
-    <p>Projeto: <strong>Prof. Vagno Lopes Nascimento</strong> | <strong>JLW</strong> Full Stack Developer</p>
-   </footer>
-
 </body>
 </html>

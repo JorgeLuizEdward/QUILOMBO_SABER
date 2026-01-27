@@ -178,47 +178,62 @@ button:active {
     font-weight: 700;
 }
 
-/
+
 #mobile-controls {
     display: none; 
 }
 
 /* mobile.css */
+/* mobile.css */
 @media screen and (max-width: 768px) {
-    #mobile-controls {
-        display: flex !important; /* Força o aparecimento no celular */
+    /* Centraliza o container principal */
+    .game-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 20px 0;
-        gap: 10px;
+        justify-content: center;
+        padding: 5px;
     }
 
+    /* Ajusta o Canvas para não estourar a tela */
     canvas {
-        width: 95vw !important; /* Quase a tela toda do celular */
+        width: 90vw !important; 
         height: auto !important;
+        margin-bottom: 20px;
     }
 
-    .screen {
-        width: 98% !important;
-        padding: 10px !important;
+    /* Organização do D-Pad (Setas) */
+    #mobile-controls {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
     }
 
-    .control-btn {
-        width: 70px;
-        height: 70px;
-        background: rgba(255, 200, 0, 0.2);
-        border: 3px solid #ffc800;
-        border-radius: 50%;
-        color: #ffc800;
-        font-size: 2rem;
+    .control-row {
         display: flex;
         justify-content: center;
-        align-items: center;
-        touch-action: manipulation;
+        gap: 15px;
     }
 
-    .middle-row {
+    .btn-control {
+        width: 65px;
+        height: 65px;
+        background: rgba(255, 200, 0, 0.2);
+        border: 2px solid #ffc800;
+        border-radius: 50%;
+        color: #ffc800;
+        font-size: 1.5rem;
         display: flex;
-        gap: 50px;
+        align-items: center;
+        justify-content: center;
+        /* Evita o zoom chato do iOS ao clicar rápido */
+        touch-action: manipulation; 
+    }
+
+    .btn-control:active {
+        background: #ffc800;
+        color: #1a0f08;
     }
 }
