@@ -1,108 +1,227 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quilombo Saber</title>
+:root {
+    --primary: #d97706;
+    --primary-dark: #924e00;
+    --accent: #991b1b;
+    --accent-dark: #6a1010;
+    --success: #16a34a;
+    --success-dark: #14532d;
+    --rank: #8b5cf6;
+    --text-dark: #1a0f08;
+}
+
+/* RESET E BASE - DESKTOP CENTRALIZADO */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+}
+
+.overlay-bg { 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: url('fundo_quilombo.jpeg') no-repeat center center fixed;
+    background-size: cover; 
+    filter: brightness(0.25); 
+    z-index: -1; 
+}
+
+/* ESTRUTURA DE TELAS */
+.screen { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100%; 
+    animation: fadeIn 0.4s ease-out; 
+}
+
+.hidden { display: none !important; }
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: scale(0.95); } 
+    to { opacity: 1; transform: scale(1); } 
+}
+
+/* TIPOGRAFIA */
+.logo-text { font-size: 3.5rem; font-weight: 900; margin: 0; color: white; text-align: center; line-height: 1.1; }
+.logo-text span { color: var(--primary); }
+.subtitle { color: white; letter-spacing: 5px; font-weight: 700; margin-bottom: 40px; opacity: 0.8; text-transform: uppercase; text-align: center; }
+
+/* BOTÕES ESTILO GAMER 3D */
+button {
+    border: none;
+    border-radius: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.1s;
+    position: relative;
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: none !important;
+}
+
+.btn-main { background: var(--primary); color: white; padding: 20px; width: 320px; margin-bottom: 15px; box-shadow: 0 6px 0 var(--primary-dark); }
+.btn-sec { background: #3b82f6; color: white; padding: 20px; width: 320px; margin-bottom: 15px; box-shadow: 0 6px 0 #1d4ed8; }
+.btn-rank { background: var(--rank); color: white; padding: 20px; width: 320px; box-shadow: 0 6px 0 #5b21b6; }
+
+/* CARDS (PERFIL E RANKING) */
+.card-modern { 
+    background: white; 
+    color: var(--text-dark); 
+    padding: 35px; 
+    border-radius: 30px; 
+    text-align: center; 
+    width: 380px; 
+    max-width: 90%;
+    border-bottom: 8px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* SEÇÃO DE PERFIL - BARRA ESTILIZADA */
+.profile-edit { 
+    background: #f9f9f9; 
+    padding: 30px 20px; 
+    border-radius: 25px; 
+    margin-bottom: 20px;
+    border: 2px solid #eee;
+}
+
+.profile-edit label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#user-name-input { 
+    width: 100%; 
+    padding: 20px; 
+    border: 3px solid #e5e5e5; 
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1.4rem; 
+    font-weight: 900;
+    text-align: center; 
+    outline: none; 
+    color: var(--primary-dark); 
+    box-sizing: border-box;
+    background: white;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.high-score-badge {
+    background: #fff7ed; color: var(--primary-dark); padding: 15px;
+    border-radius: 15px; border: 2px dashed var(--primary);
+    font-weight: 900; font-size: 1.1rem; margin-top: 10px;
+}
+
+/* BOTÃO VOLTAR DO RANKING */
+.back-btn { 
+    background: #1f2937; color: white; padding: 20px; 
+    width: 100%; margin-top: 15px; box-shadow: 0 6px 0 #000;
+}
+
+/* GAMEPLAY AREA */
+#game-container { position: relative; border: 8px solid white; border-radius: 25px; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+canvas { display: block; max-width: 100%; height: auto; }
+
+/* QUIZ UI - O CARD FLUTUANTE RESTAURADO */
+#quiz-container { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.9); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 1000; 
+    border-radius: 20px; 
+}
+
+#quiz-card { 
+    background: white; 
+    color: var(--text-dark); 
+    padding: 30px; 
+    border-radius: 25px; 
+    width: 85%; 
+    max-width: 400px;
+    border-bottom: 8px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.quiz-header { 
+    color: var(--primary); 
+    font-weight: 900; font-size: 0.85rem; 
+    margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;
+}
+
+#quiz-options button { 
+    width: 100%; margin: 8px 0; padding: 16px; 
+    background: #f3f4f6; color: var(--text-dark); 
+    border-bottom: 4px solid #d1d5db; font-weight: 700;
+}
+
+/* INFO BAR */
+.info-bar { 
+    display: flex; justify-content: space-between; align-items: center; 
+    width: 600px; max-width: 95%; margin-top: 25px; background: rgba(255,255,255,0.1); 
+    padding: 15px 25px; border-radius: 25px; backdrop-filter: blur(10px); box-sizing: border-box;
+}
+
+#score { font-size: 2.2rem; font-weight: 900; color: var(--primary); }
+.btn-action-green { background: var(--success); color: white; padding: 12px 20px; box-shadow: 0 4px 0 var(--success-dark); }
+.btn-action-red { background: var(--accent); color: white; padding: 12px 20px; box-shadow: 0 4px 0 var(--accent-dark); }
+
+/* FOOTER */
+.game-footer {
+    position: fixed; bottom: 15px; width: 100%; text-align: center;
+    color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; pointer-events: none;
+}
+.game-footer strong { color: var(--primary); font-weight: 700; }
+
+/* ESCONDER CONTROLES NO DESKTOP */
+#mobile-controls { display: none !important; }
+
+/* --- REGRAS MOBILE (ISOLADAS) --- */
+@media screen and (max-width: 768px) {
+    body { display: block; overflow-y: auto; }
+    .screen { min-height: 100vh; justify-content: flex-start; padding-top: 30px; }
+    .logo-text { font-size: 2.2rem !important; }
+
+    #game-container { width: 92vw !important; max-width: 320px; margin: 0 auto; border-width: 4px; }
     
-    <link rel="stylesheet" href="index.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-</head>
-<body>
-    <div class="overlay-bg"></div>
+    #mobile-controls { display: flex !important; flex-direction: column; align-items: center; margin: 20px 0; gap: 10px; }
+    .control-row { display: flex; gap: 12px; }
+    .btn-control {
+        width: 60px !important; height: 60px !important;
+        background: var(--primary); color: white;
+        box-shadow: 0 4px 0 var(--primary-dark);
+        border-radius: 50%; font-size: 1.5rem;
+    }
 
-    <div id="main-menu" class="screen">
-        <h1 class="logo-text">QUILOMBO<span>SABER</span></h1>
-        <p class="subtitle">TRADIÇÃO EM MOVIMENTO</p>
-        
-        <div class="menu-options">
-            <button id="btn-play" class="btn-main" onclick="checkUserBeforePlay()">COMEÇAR A JOGAR</button>
-            <button class="btn-sec" onclick="showScreen('profile-screen')">MEU PERFIL</button>
-            <button class="btn-rank" onclick="showScreen('ranking-screen')">RANKING</button>
-        </div>
-        <p id="play-warning" style="color: #ff4b4b; font-weight: bold; margin-top: 15px;" class="hidden">Crie um perfil para liberar o jogo!</p>
-    </div>
+    #quiz-card { padding: 20px; width: 90%; }
+    #quiz-options button { padding: 12px; font-size: 0.8rem; }
 
-    <div id="profile-screen" class="screen hidden">
-        <div class="card-modern">
-            <h2>MEU PERFIL</h2>
-            <div class="profile-edit">
-                <label for="user-name-input" style="display:block; margin-bottom:10px; font-weight:900;">COMO VOCÊ SE CHAMA?</label>
-                <input type="text" id="user-name-input" placeholder="Digite seu nome..." maxlength="12">
-            </div>
-            <div class="stats">
-                <div class="high-score-badge">🏆 Seu Recorde: <span id="high-score-display">0</span></div>
-            </div>
-            <button class="btn-action-green" style="width:100%; margin-top:20px;" onclick="saveUserAndReturn()">SALVAR E VOLTAR</button>
-        </div>
-    </div>
-
-    <div id="ranking-screen" class="screen hidden">
-        <div class="card-modern">
-            <h2>🏆 TOP EXPLORADORES</h2>
-            <table id="ranking-table">
-                <thead>
-                    <tr>
-                        <th>Pos</th>
-                        <th>Explorador</th>
-                        <th>Pontos</th>
-                    </tr>
-                </thead>
-                <tbody id="ranking-body"></tbody>
-            </table>
-            
-            <button class="back-btn" onclick="showScreen('main-menu')">VOLTAR AO MENU</button>
-            
-            <div class="separator-space"></div>
-            <button class="btn-clear-ranking" onclick="clearRanking()">Resetar Ranking</button>
-        </div>
-    </div>
-
-    <div id="game-screen" class="screen hidden">
-        <div id="game-container">
-            <canvas id="canvas" width="600" height="600"></canvas>
-            
-            <div id="mobile-controls">
-                <div class="control-row">
-                    <button class="btn-control" id="btn-up" aria-label="Cima">▲</button>
-                </div>
-                <div class="control-row">
-                    <button class="btn-control" id="btn-left" aria-label="Esquerda">◀</button>
-                    <button class="btn-control" id="btn-down" aria-label="Baixo">▼</button>
-                    <button class="btn-control" id="btn-right" aria-label="Direita">▶</button>
-                </div>
-            </div>
-
-            <div id="quiz-container" class="hidden">
-                <div id="quiz-card">
-                    <div class="quiz-header">DESAFIO ANCESTRAL</div>
-                    <h2 id="quiz-question"></h2>
-                    <div id="quiz-options"></div>
-                </div>
-            </div>
-            <div id="countdown" class="hidden"></div>
-        </div>
-
-        <div class="info-bar">
-            <div class="score-box">
-                <span class="score-label">PONTOS: </span>
-                <span id="score">0</span>
-            </div>
-            <div class="game-actions">
-                <button id="restart-button" class="btn-action-green">REINICIAR</button>
-                <button class="btn-action-red" onclick="showScreen('main-menu')">MENU</button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="game-footer">
-        <p>Projeto: <strong>Prof. Vagno Lopes Nascimento</strong> | <strong>JLW</strong> Full Stack Developer</p>
-    </footer>
-
-    <script src="index.js"></script>
-</body>
-</html>
+    .info-bar { width: 92vw; flex-direction: row; justify-content: space-around; padding: 10px; margin: 20px auto; }
+    .game-footer { position: relative !important; margin: 40px 0; bottom: auto; padding-bottom: 20px; }
+}
