@@ -166,14 +166,59 @@ button:active {
     bottom: 15px;
     width: 100%;
     text-align: center;
-    color: rgba(255, 255, 255, 0.6); /* Branco suave com transparência */
+    color: rgba(255, 255, 255, 0.6); 
     font-size: 0.8rem;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
-    pointer-events: none; /* Garante que não atrapalhe cliques no jogo */
+    pointer-events: none; 
 }
 
 .game-footer strong {
-    color: var(--primary); /* Destaque nos nomes com a cor dourada do seu jogo */
+    color: var(--primary); 
     font-weight: 700;
+}
+
+/
+#mobile-controls {
+    display: none; 
+}
+
+/* mobile.css */
+@media screen and (max-width: 768px) {
+    #mobile-controls {
+        display: flex !important; /* Força o aparecimento no celular */
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+        gap: 10px;
+    }
+
+    canvas {
+        width: 95vw !important; /* Quase a tela toda do celular */
+        height: auto !important;
+    }
+
+    .screen {
+        width: 98% !important;
+        padding: 10px !important;
+    }
+
+    .control-btn {
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 200, 0, 0.2);
+        border: 3px solid #ffc800;
+        border-radius: 50%;
+        color: #ffc800;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        touch-action: manipulation;
+    }
+
+    .middle-row {
+        display: flex;
+        gap: 50px;
+    }
 }

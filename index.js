@@ -240,3 +240,27 @@ document.addEventListener('keydown', e => {
 
 document.getElementById("restart-button").onclick = (e) => { e.target.blur(); startGame(); };
 showScreen('main-menu');
+
+// No final do seu index.js
+function handleDirection(newDx, newDy) {
+    if (isPaused || gameOver || activeScreen !== 'game-screen') return;
+    if ((newDx === 1 && dx === -1) || (newDx === -1 && dx === 1)) return;
+    if ((newDy === 1 && dy === -1) || (newDy === -1 && dy === 1)) return;
+    
+    dx = newDx; dy = newDy;
+    if (!gameStarted) { gameStarted = true; gameLoop(); }
+}
+
+// Mobile Clicks
+document.getElementById('btn-up').onclick = () => handleDirection(0, -1);
+document.getElementById('btn-down').onclick = () => handleDirection(0, 1);
+document.getElementById('btn-left').onclick = () => handleDirection(-1, 0);
+document.getElementById('btn-right').onclick = () => handleDirection(1, 0);
+
+// Desktop Keys
+document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowUp') handleDirection(0, -1);
+    if (e.key === 'ArrowDown') handleDirection(0, 1);
+    if (e.key === 'ArrowLeft') handleDirection(-1, 0);
+    if (e.key === 'ArrowRight') handleDirection(1, 0);
+});
