@@ -264,3 +264,26 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') handleDirection(-1, 0);
     if (e.key === 'ArrowRight') handleDirection(1, 0);
 });
+
+// Função auxiliar para mudar a direção (usada por teclado e botões)
+function changeDirection(newDx, newDy) {
+    if (isPaused || gameOver || activeScreen !== 'game-screen') return;
+    
+    // Evita que a cobra volte para trás dela mesma
+    if ((newDx === 1 && dx === -1) || (newDx === -1 && dx === 1)) return;
+    if ((newDy === 1 && dy === -1) || (newDy === -1 && dy === 1)) return;
+
+    dx = newDx;
+    dy = newDy;
+
+    if (!gameStarted) {
+        gameStarted = true;
+        gameLoop();
+    }
+}
+
+// Mapeamento dos botões mobile
+document.getElementById('btn-up').addEventListener('touchstart', (e) => { e.preventDefault(); changeDirection(0, -1); });
+document.getElementById('btn-down').addEventListener('touchstart', (e) => { e.preventDefault(); changeDirection(0, 1); });
+document.getElementById('btn-left').addEventListener('touchstart', (e) => { e.preventDefault(); changeDirection(-1, 0); });
+document.getElementById('btn-right').addEventListener('touchstart', (e) => { e.preventDefault(); changeDirection(1, 0); });
