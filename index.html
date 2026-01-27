@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quilombo Saber</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="overlay-bg"></div>
+
+    <div id="main-menu" class="screen">
+        <h1 class="logo-text">QUILOMBO<span>SABER</span></h1>
+        <p class="subtitle">TRADIÇÃO EM MOVIMENTO</p>
+        <div class="menu-options">
+            <button id="btn-play" class="btn-main" onclick="checkUserBeforePlay()"> COMEÇAR A JOGAR</button>
+            <button class="btn-sec" onclick="showScreen('profile-screen')"> MEU PERFIL</button>
+            <button class="btn-rank" onclick="showScreen('ranking-screen')"> RANKING</button>
+        </div>
+        <p id="play-warning" style="color: #ff4b4b; font-weight: bold; margin-top: 10px;" class="hidden">Crie um perfil para liberar o jogo!</p>
+    </div>
+
+    <div id="profile-screen" class="screen hidden">
+        <div class="card-modern">
+            <h2>MEU PERFIL</h2>
+            <div class="profile-edit">
+                <label for="user-name-input" style="display:block; margin-bottom:10px; font-weight:900;">COMO VOCÊ SE CHAMA?</label>
+                <input type="text" id="user-name-input" placeholder="Digite seu nome..." maxlength="12">
+            </div>
+            <div class="stats" style="margin-top:20px;">
+                <div class="high-score-badge">🏆 Seu Recorde: <span id="high-score-display">0</span></div>
+            </div>
+            <button class="btn-action-green" style="width:100%; margin-top:20px;" onclick="saveUserAndReturn()">SALVAR E VOLTAR</button>
+        </div>
+    </div>
+
+   <div id="ranking-screen" class="screen hidden">
+    <div class="card-modern">
+        <h2>🏆 TOP EXPLORADORES</h2>
+        <table id="ranking-table">
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Explorador</th>
+                    <th>Pontos</th>
+                </tr>
+            </thead>
+            <tbody id="ranking-body"></tbody>
+        </table>
+        
+        <button class="back-btn" onclick="showScreen('main-menu')">VOLTAR AO MENU</button>
+        
+        <div class="separator-space"></div>
+        <button class="btn-clear-ranking" onclick="clearRanking()"> Resetar Ranking</button>
+    </div>
+</div>
+
+    <div id="game-screen" class="screen hidden">
+        <div id="game-container">
+            <canvas id="canvas" width="600" height="600"></canvas>
+            <div id="quiz-container" class="hidden">
+                <div id="quiz-card">
+                    <div class="quiz-header"> DESAFIO ANCESTRAL</div>
+                    <h2 id="quiz-question"></h2>
+                    <div id="quiz-options"></div>
+                </div>
+            </div>
+            <div id="countdown" class="hidden"></div>
+        </div>
+        <div class="info-bar">
+            <div class="score-box">
+                <span class="score-label">PONTOS</span>
+                <span id="score">0</span>
+            </div>
+            <div class="game-actions">
+                <button id="restart-button" class="btn-action-green"> REINICIAR</button>
+                <button class="btn-action-red" onclick="showScreen('main-menu')"> MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
