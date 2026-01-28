@@ -1,4 +1,4 @@
-=:root {
+:root {
     --primary: #d97706;
     --primary-dark: #924e00;
     --accent: #991b1b;
@@ -9,7 +9,6 @@
     --text-dark: #1a0f08;
 }
 
-/* RESET E BASE - DESKTOP CENTRALIZADO */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -22,206 +21,77 @@ body {
 }
 
 .overlay-bg { 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: url('fundo_quilombo.jpeg') no-repeat center center fixed;
-    background-size: cover; 
-    filter: brightness(0.25); 
-    z-index: -1; 
+    background-size: cover; filter: brightness(0.25); z-index: -1; 
 }
 
-/* ESTRUTURA DE TELAS */
-.screen { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    width: 100%; 
-    animation: fadeIn 0.4s ease-out; 
-}
-
+.screen { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; animation: fadeIn 0.4s ease-out; }
 .hidden { display: none !important; }
 
-@keyframes fadeIn { 
-    from { opacity: 0; transform: scale(0.95); } 
-    to { opacity: 1; transform: scale(1); } 
-}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-/* TIPOGRAFIA */
-.logo-text { font-size: 3.5rem; font-weight: 900; margin: 0; color: white; text-align: center; line-height: 1.1; }
+/* DESIGN GAMER 3D */
+.logo-text { font-size: 3.5rem; font-weight: 900; margin: 0; color: white; text-align: center; }
 .logo-text span { color: var(--primary); }
 .subtitle { color: white; letter-spacing: 5px; font-weight: 700; margin-bottom: 40px; opacity: 0.8; text-transform: uppercase; text-align: center; }
 
-/* BOTÕES ESTILO GAMER 3D */
 button {
-    border: none;
-    border-radius: 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.1s;
-    position: relative;
+    border: none; border-radius: 16px; font-family: 'Montserrat', sans-serif;
+    font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.1s;
 }
-
-button:active {
-    transform: translateY(4px);
-    box-shadow: none !important;
-}
+button:active { transform: translateY(4px); box-shadow: none !important; }
 
 .btn-main { background: var(--primary); color: white; padding: 20px; width: 320px; margin-bottom: 15px; box-shadow: 0 6px 0 var(--primary-dark); }
 .btn-sec { background: #3b82f6; color: white; padding: 20px; width: 320px; margin-bottom: 15px; box-shadow: 0 6px 0 #1d4ed8; }
 .btn-rank { background: var(--rank); color: white; padding: 20px; width: 320px; box-shadow: 0 6px 0 #5b21b6; }
 
-/* CARDS (PERFIL E RANKING) */
+/* PERFIL E RANKING ESTILIZADOS */
 .card-modern { 
-    background: white; 
-    color: var(--text-dark); 
-    padding: 35px; 
-    border-radius: 30px; 
-    text-align: center; 
-    width: 380px; 
-    max-width: 90%;
-    border-bottom: 8px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    min-height: 480px;
-    justify-content: space-between;
+    background: white; color: var(--text-dark); padding: 35px; border-radius: 30px; 
+    text-align: center; width: 380px; max-width: 90%; border-bottom: 8px solid #ccc;
+    display: flex; flex-direction: column; min-height: 480px; justify-content: space-between;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-/* SEÇÃO DE PERFIL - BARRA ESTILIZADA */
-.profile-edit { 
-    background: #f9f9f9; 
-    padding: 30px 20px; 
-    border-radius: 25px; 
-    margin-bottom: 20px;
-    border: 2px solid #eee;
-}
-
-.profile-edit label {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-}
+.profile-edit { background: #f9f9f9; padding: 30px 20px; border-radius: 25px; margin-bottom: 20px; border: 2px solid #eee; }
+.profile-edit label { display: block; font-size: 1.1rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; text-align: center; }
 
 #user-name-input { 
-    width: 100%; 
-    padding: 20px; 
-    border: 3px solid #e5e5e5; 
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif; 
-    font-size: 1.4rem; 
-    font-weight: 900;
-    text-align: center; 
-    outline: none; 
-    color: var(--primary-dark); 
-    box-sizing: border-box;
-    background: white;
+    width: 100%; padding: 20px; border: 3px solid #e5e5e5; border-radius: 20px;
+    font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 900;
+    text-align: center; outline: none; color: var(--primary-dark); box-sizing: border-box;
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.05);
-    transition: 0.3s;
 }
 
-.high-score-badge {
-    background: #fff7ed; color: var(--primary-dark); padding: 15px;
-    border-radius: 15px; border: 2px dashed var(--primary);
-    font-weight: 900; font-size: 1.1rem; margin-top: 10px;
-}
+.high-score-badge { background: #fff7ed; color: var(--primary-dark); padding: 15px; border-radius: 15px; border: 2px dashed var(--primary); font-weight: 900; margin-top: 10px; }
+.back-btn { background: #1f2937; color: white; padding: 20px; width: 100%; margin-top: 15px; box-shadow: 0 6px 0 #000; }
 
-/* BOTÃO VOLTAR DO RANKING */
-.back-btn { 
-    background: #1f2937; color: white; padding: 20px; 
-    width: 100%; margin-top: 15px; box-shadow: 0 6px 0 #000;
-}
+/* QUIZ TOP VERSION */
+#quiz-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; border-radius: 20px; }
+#quiz-card { background: white; color: var(--text-dark); padding: 30px; border-radius: 25px; width: 85%; max-width: 400px; border-bottom: 8px solid #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+.quiz-header { color: var(--primary); font-weight: 900; font-size: 0.85rem; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+#quiz-options button { width: 100%; margin: 8px 0; padding: 16px; background: #f3f4f6; color: var(--text-dark); border-bottom: 4px solid #d1d5db; font-weight: 700; }
 
 /* GAMEPLAY AREA */
 #game-container { position: relative; border: 8px solid white; border-radius: 25px; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-canvas { display: block; max-width: 100%; height: auto; }
-
-/* QUIZ UI - O CARD FLUTUANTE RESTAURADO */
-#quiz-container { 
-    position: absolute; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.9); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    z-index: 1000; 
-    border-radius: 20px; 
-}
-
-#quiz-card { 
-    background: white; 
-    color: var(--text-dark); 
-    padding: 30px; 
-    border-radius: 25px; 
-    width: 85%; 
-    max-width: 400px;
-    border-bottom: 8px solid #ddd;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-.quiz-header { 
-    color: var(--primary); 
-    font-weight: 900; font-size: 0.85rem; 
-    margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase;
-}
-
-#quiz-options button { 
-    width: 100%; margin: 8px 0; padding: 16px; 
-    background: #f3f4f6; color: var(--text-dark); 
-    border-bottom: 4px solid #d1d5db; font-weight: 700;
-}
-
-/* INFO BAR */
-.info-bar { 
-    display: flex; justify-content: space-between; align-items: center; 
-    width: 600px; max-width: 95%; margin-top: 25px; background: rgba(255,255,255,0.1); 
-    padding: 15px 25px; border-radius: 25px; backdrop-filter: blur(10px); box-sizing: border-box;
-}
-
+.info-bar { display: flex; justify-content: space-between; align-items: center; width: 600px; max-width: 95%; margin-top: 25px; background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 25px; backdrop-filter: blur(10px); box-sizing: border-box; }
 #score { font-size: 2.2rem; font-weight: 900; color: var(--primary); }
 .btn-action-green { background: var(--success); color: white; padding: 12px 20px; box-shadow: 0 4px 0 var(--success-dark); }
 .btn-action-red { background: var(--accent); color: white; padding: 12px 20px; box-shadow: 0 4px 0 var(--accent-dark); }
 
-/* FOOTER */
-.game-footer {
-    position: fixed; bottom: 15px; width: 100%; text-align: center;
-    color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; pointer-events: none;
-}
-.game-footer strong { color: var(--primary); font-weight: 700; }
-
-/* ESCONDER CONTROLES NO DESKTOP */
+.game-footer { position: fixed; bottom: 15px; width: 100%; text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; pointer-events: none; }
 #mobile-controls { display: none !important; }
 
-/* --- REGRAS MOBILE (ISOLADAS) --- */
+/* MOBILE REVISADO */
 @media screen and (max-width: 768px) {
     body { display: block; overflow-y: auto; }
     .screen { min-height: 100vh; justify-content: flex-start; padding-top: 30px; }
     .logo-text { font-size: 2.2rem !important; }
-
     #game-container { width: 92vw !important; max-width: 320px; margin: 0 auto; border-width: 4px; }
-    
     #mobile-controls { display: flex !important; flex-direction: column; align-items: center; margin: 20px 0; gap: 10px; }
     .control-row { display: flex; gap: 12px; }
-    .btn-control {
-        width: 60px !important; height: 60px !important;
-        background: var(--primary); color: white;
-        box-shadow: 0 4px 0 var(--primary-dark);
-        border-radius: 50%; font-size: 1.5rem;
-    }
-
-    #quiz-card { padding: 20px; width: 90%; }
-    #quiz-options button { padding: 12px; font-size: 0.8rem; }
-
+    .btn-control { width: 60px !important; height: 60px !important; background: var(--primary); color: white; box-shadow: 0 4px 0 var(--primary-dark); border-radius: 50%; font-size: 1.5rem; }
     .info-bar { width: 92vw; flex-direction: row; justify-content: space-around; padding: 10px; margin: 20px auto; }
     .game-footer { position: relative !important; margin: 40px 0; bottom: auto; padding-bottom: 20px; }
 }
